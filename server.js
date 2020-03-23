@@ -6,6 +6,10 @@ const mockUserData=[
 	{name:'Jill'}
 ]
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.get('/users', function(req,res){
 	res.json({
 		success: true,
@@ -26,6 +30,7 @@ app.get('/users/:id', function(req,res){
 
 app.post('/login',function(req,res){
 	// Typically passwords are encrypted using something like bcrypt before sending to database
+	console.log(req);
 	const username=req.body.username;
 	const password=req.body.password;
 
